@@ -1,3 +1,7 @@
+# Bazel Repository Toolbox
+
+[![Build Status](https://travis-ci.org/quittle/bazel_repository_toolbox.svg?branch=master)](https://travis-ci.org/quittle/bazel_repository_toolbox)
+
 ### What this is
 
 Many open source projects are hosted on Github. It also enables easy switching from `git_repository`s to `http_archive`s, which is prefered when possible for increased security and download speeds. See [the official docs](https://docs.bazel.build/versions/master/be/workspace.html) for more documentation on why `git_repository` is not preferred when possible.
