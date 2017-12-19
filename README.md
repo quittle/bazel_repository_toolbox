@@ -6,6 +6,8 @@
 
 Many open source projects are hosted on Github. It also enables easy switching from `git_repository`s to `http_archive`s, which is prefered when possible for increased security and download speeds. See [the official docs](https://docs.bazel.build/versions/master/be/workspace.html) for more documentation on why `git_repository` is not preferred when possible.
 
+It will also nag you to add sha256 for repositories that don't specify it.
+
 ### Example Usage
 
 ```
@@ -16,7 +18,7 @@ git_repository(
     commit = "<HASH-GOES-HERE>"
 )
 
-load("@github_repository_rules//:github_repository.bzl", "github_repository")
+load("@github_repository_rules//:github_repository.bzl", "github_repository", "new_github_repository")
 
 github_repository(
     name = "io_bazel",
