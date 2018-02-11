@@ -13,7 +13,7 @@ It will also nag you to add sha256 for repositories that don't specify it.
 ```
 # Ironically you can't load the github rules without using git_repository
 git_repository(
-    name="github_repository_rules",
+    name = "github_repository_rules",
     remote = "https://github.com/quittle/github_repository_rules",
     commit = "<HASH-GOES-HERE>"
 )
@@ -33,6 +33,6 @@ new_github_repository(
     project = "skydoc",
     commit = "55dafa9e7204742f9c3329241d8fdf6d667288ee",
     sha256 = "e47a74a44385e42a6a9a1c34430896a24d69706c689dadffa78772e818541a37",
-    build_file = "skydoc.BUILD",
+    build_file = "skydoc.BUILD"
 )
 ```
