@@ -11,14 +11,14 @@ It will also nag you to add sha256 for repositories that don't specify it.
 ### Example Usage
 
 ```
-# Ironically you can't load the github rules without using git_repository
+# Ironically you can't load the GitHub rules without using the basic git_repository repository rule
 git_repository(
-    name = "github_repository_rules",
-    remote = "https://github.com/quittle/github_repository_rules",
+    name = "bazel_repository_toolbox",
+    remote = "https://github.com/quittle/bazel_repository_toolbox",
     commit = "<HASH-GOES-HERE>"
 )
 
-load("@github_repository_rules//:github_repository.bzl", "github_repository", "new_github_repository")
+load("@bazel_repository_toolbox//:github_repository.bzl", "github_repository", "new_github_repository")
 
 github_repository(
     name = "io_bazel",
