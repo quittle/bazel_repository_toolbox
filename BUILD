@@ -4,6 +4,7 @@
 py_library(
     name = "all_repository_deps",
     data = [
+        "@repo_with_v_in_tag//:brotli",
         "@bazel_commit//:dummy",
         "@bazel_tag//:dummy",
         "@bazel_tag_sha256//:dummy",

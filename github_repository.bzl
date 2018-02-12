@@ -9,6 +9,13 @@ def new_github_repository(name=None, user=None, project=None, commit=None, tag=N
         # Ordered by specificity
         id = commit or tag
 
+        # GitHub strips the "v" from tags like "v1.0" and uses "1.0" instead
+        github_id = id
+        for num in range(10):
+            if id.startswith("v{n}".format(n = num)):
+                github_id = id[1:]
+                break
+
         if is_new:
             method = native.new_http_archive
         else:
@@ -17,7 +24,7 @@ def new_github_repository(name=None, user=None, project=None, commit=None, tag=N
         return method(**{
             "name": name,
             "sha256": sha256,
-            "strip_prefix": "{project}-{id}".format(project=project, id=id),
+            "strip_prefix": "{project}-{id}".format(project=project, id=github_id),
             "urls": [
                 "https://github.com/{user}/{project}/archive/{id}.tar.gz".format(user=user, project=project, id=id),
             ],

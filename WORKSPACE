@@ -52,3 +52,20 @@ new_github_repository(
     tag = "0.1.4",
     build_file = "dummy.BUILD",
 )
+
+# For repo_with_v_in_tag
+github_repository(
+    name = "io_bazel_rules_go",
+    user = "bazelbuild",
+    project = "rules_go",
+    tag = "0.9.0",
+    sha256 = "dea9e0405aae86e5339b1ccdd656387b4982352da7cec3ab688f1965440d3326",
+)
+
+github_repository(
+    name = "repo_with_v_in_tag",
+    user = "google",
+    project = "brotli",
+    tag = "v1.0.2",
+    sha256 = "c2cf2a16646b44771a4109bb21218c8e2d952babb827796eb8a800c1f94b7422",
+)
