@@ -4,8 +4,14 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
 
-# Equivalent to new_git_repository but for github repos
 def new_github_repository(name = None, user = None, project = None, commit = None, tag = None, sha256 = None, build_file = None, build_file_content = None):
+    """
+        Equivalent to new_git_repository but for github repos
+
+        If sha256 is set, the repository will be downloaded in its .tar.gz form, ensuring the bytes do
+        not change over time, even when using a tag which may be changed in the origin.
+    """
+
     if sha256 != None:
         # Ordered by specificity
         id = commit or tag
@@ -28,12 +34,6 @@ def new_github_repository(name = None, user = None, project = None, commit = Non
             "build_file_content": build_file_content,
         })
     else:
-        print(
-            ("Consider adding a sha256 argument to {name} for improved security and downloads.\n" +
-             "See https://docs.bazel.build/versions/master/be/workspace.html for more " +
-             "information regarding these recommendations from Bazel").format(name = name),
-        )
-
         if build_file != None or build_file_content != None:
             method = new_git_repository
         else:
@@ -48,6 +48,7 @@ def new_github_repository(name = None, user = None, project = None, commit = Non
             "build_file_content": build_file_content,
         })
 
-# Equivalent to new_git_repository but for github repos
 def github_repository(name = None, user = None, project = None, commit = None, tag = None, sha256 = None):
+    """ Equivalent to new_git_repository but for github repos """
+
     return new_github_repository(name = name, user = user, project = project, commit = commit, tag = tag, sha256 = sha256)
